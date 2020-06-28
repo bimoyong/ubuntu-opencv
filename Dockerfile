@@ -39,4 +39,3 @@ RUN curl -Lo opencv.zip https://github.com/opencv/opencv/archive/${OPENCV_VERSIO
     make -j $(nproc --all) && \
     make preinstall && make install && ldconfig && \
     cd / && rm -rf opencv*
-
