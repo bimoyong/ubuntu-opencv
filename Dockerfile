@@ -13,19 +13,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev && \
     rm -rf /var/lib/apt/lists/*
 
-ARG OPENCV_VERSION="4.3.0"
-ENV OPENCV_VERSION $OPENCV_VERSION
+ARG OPENCV_VER="4.3.0"
+ENV OPENCV_VER $OPENCV_VER
 
-RUN curl -Lo opencv.zip https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip && \
+RUN curl -Lo opencv.zip https://github.com/opencv/opencv/archive/${OPENCV_VER}.zip && \
     unzip -q opencv.zip && \
-    curl -Lo opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip && \
+    curl -Lo opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VER}.zip && \
     unzip -q opencv_contrib.zip && \
     rm opencv.zip opencv_contrib.zip && \
-    cd opencv-${OPENCV_VERSION} && \
+    cd opencv-${OPENCV_VER} && \
     mkdir build && cd build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/usr/local \
-    -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${OPENCV_VERSION}/modules \
+    -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${OPENCV_VER}/modules \
     -D WITH_JASPER=OFF \
     -D BUILD_DOCS=OFF \
     -D BUILD_EXAMPLES=OFF \
